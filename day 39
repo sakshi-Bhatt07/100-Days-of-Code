@@ -1,0 +1,74 @@
+//Check if the elements on the diagonal of a matrix are distinct.
+
+#include <stdio.h>
+#include <stdbool.h>
+
+// Function to check if diagonal elements are distinct
+bool areDiagonalElementsDistinct(int matrix[][10], int size) {
+    for (int i = 0; i < size; i++) {
+        for (int j = i + 1; j < size; j++) {
+            if (matrix[i][i] == matrix[j][j]) {
+                return false; // Found a duplicate
+            }
+        }
+    }
+    return true; // All diagonal elements are distinct
+}
+
+int main() {
+    int size;
+
+    printf("Enter the size of the square matrix: ");
+    scanf("%d", &size);
+
+    int matrix[10][10]; // Assuming max size 10x10, adjust as needed
+
+    printf("Enter the elements of the matrix:\n");
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+
+    if (areDiagonalElementsDistinct(matrix, size)) {
+        printf("The elements on the principal diagonal are distinct.\n");
+    } else {
+        printf("The elements on the principal diagonal are NOT distinct.\n");
+    }
+
+    return 0;
+}
+______________________________________________________________________________________________
+//Find the sum of main diagonal elements for a square matrix.
+
+#include <stdio.h>
+
+int main() {
+    int size;
+
+    // Get the size of the square matrix from the user
+    printf("Enter the size of the square matrix: ");
+    scanf("%d", &size);
+
+    int matrix[size][size];
+    int sum_main_diagonal = 0;
+
+    // Input elements into the matrix
+    printf("Enter the elements of the matrix:\n");
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            printf("Enter element at position [%d][%d]: ", i, j);
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+
+    // Calculate the sum of the main diagonal elements
+    for (int i = 0; i < size; i++) {
+        sum_main_diagonal += matrix[i][i]; // Main diagonal elements have i == j
+    }
+
+    // Print the sum
+    printf("The sum of the main diagonal elements is: %d\n", sum_main_diagonal);
+
+    return 0;
+}
