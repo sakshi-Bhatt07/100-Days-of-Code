@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char s[1000];
+    printf("Enter the string: ");
+    scanf("%s", s);
+
+    int freq[256] = {0};   // Character frequency
+    int left = 0, right = 0;
+    int maxLen = 0;
+    int n = strlen(s);
+
+    while (right < n) {
+        freq[(unsigned char)s[right]]++;
+
+        // If repeated character found → shrink window from left
+        while (freq[(unsigned char)s[right]] > 1) {
+            freq[(unsigned char)s[left]]--;
+            left++;
+        }
+
+        // Update maximum window size
+        int windowLen = right - left + 1;
+        if (windowLen > maxLen)
+            maxLen = windowLen;
+
+        right++;
+    }
+
+    printf("%d", maxLen);
+    return 0;
+}
