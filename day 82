@@ -1,0 +1,30 @@
+//QDefine an enum for traffic lights (RED, YELLOW, GREEN) and print 'Stop', 'Wait', or 'Go' based on its value.
+#include <stdio.h>
+
+int main() {
+    // Define enum for traffic lights
+    enum TrafficLight { RED, YELLOW, GREEN };
+
+    // Take input as integer (0=RED, 1=YELLOW, 2=GREEN)
+    int light;
+    printf("Enter traffic light (0=RED, 1=YELLOW, 2=GREEN): ");
+    scanf("%d", &light);
+
+    // Check value and print action
+    switch (light) {
+        case RED:
+            printf("Stop\n");
+            break;
+        case YELLOW:
+            printf("Wait\n");
+            break;
+        case GREEN:
+            printf("Go\n");
+            break;
+        default:
+            printf("Invalid input!\n");
+    }
+
+    return 0;
+}
+  
